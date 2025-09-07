@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letters to Her ✉️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="letter.css">
+  <link rel="stylesheet" href="navbar.css">
+  <style>
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 0.9; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Beautiful Romantic Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+          <a href="bday.html">
+            <img src="images/logo.png" alt="Shaily Birthday Logo" class="navbar-logo-img">
+          </a>        </div>
+        <ul class="nav-menu">
+           
+            <li class="nav-item">
+                <a href="bday.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="story.html" class="nav-link">Our Journey</a>
+          </li>
+            <li class="nav-item">
+                <a href="favorite.html" class="nav-link ">My Girl's Favorite</a>
+            </li>
+            <li class="nav-item">
+                <a href="letter.html" class="nav-link active">Letter</a>
+            </li>
+            <li class="nav-item">
+                <a href="playlist.html" class="nav-link">Playlist</a>
+            </li>
+            <li class="nav-item">
+                <a href="gift.html" class="nav-link">Gifts</a>
+            </li>
+        </ul>
+        <div class="nav-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>
+
+  <!-- Hero Section -->
+  <section class="letter-hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Letters to Her...</h1>
+      <p class="hero-subtitle">Every word written with love, sealed with kisses</p>
+   
+    </div>
+  </section>
+
+  <!-- Letters Section -->
+  <section class="letters-section">
+    <div class="container">
+      <div class="letters-grid">
+        
+        <!-- Letter 1 -->
+        <div class="letter-envelope" data-letter="1">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💕</div>
+            </div>
+            <div class="envelope-address">
+            
+              <span class="recipient">Gratitude</span>
+          
+            </div>
+            <div class="envelope-decoration">✨</div>
+          </div>
+          <div class="ribbon ribbon-1"></div>
+        </div>
+
+        <!-- Letter 2 -->
+        <div class="letter-envelope" data-letter="2">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💖</div>
+            </div>
+            <div class="envelope-address">
+              <span class="recipient">Sorry</span>
+            </div>
+            <div class="envelope-decoration">🌸</div>
+          </div>
+          <div class="ribbon ribbon-2"></div>
+        </div>
+
+        <!-- Letter 3 -->
+        <div class="letter-envelope" data-letter="3">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💝</div>
+            </div>
+            <div class="envelope-address">
+              <span class="recipient">Her Complaint</span>
+            </div>
+            <div class="envelope-decoration">🦋</div>
+          </div>
+          <div class="ribbon ribbon-3"></div>
+        </div>
+
+        <!-- Letter 4 -->
+        <div class="letter-envelope" data-letter="4">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💗</div>
+            </div>
+            <div class="envelope-address">
+              <span class="recipient">Promise</span>
+            </div>
+            <div class="envelope-decoration">🌟</div>
+          </div>
+          <div class="ribbon ribbon-4"></div>
+        </div>
+
+        <!-- Letter 5 -->
+        <div class="letter-envelope" data-letter="5">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💘</div>
+            </div>
+            <div class="envelope-address">
+              <span class="recipient">Feeling</span>
+            </div>
+            <div class="envelope-decoration">☀️</div>
+          </div>
+          <div class="ribbon ribbon-5"></div>
+        </div>
+
+        <!-- Letter 6 -->
+        <div class="letter-envelope" data-letter="6">
+          <div class="envelope-front">
+            <div class="envelope-header"></div>
+            <div class="envelope-seal">
+              <div class="wax-seal">💞</div>
+            </div>
+            <div class="envelope-address">
+              <span class="recipient">Future</span>
+            </div>
+            <div class="envelope-decoration">🌹</div>
+          </div>
+          <div class="ribbon ribbon-6"></div>
+        </div>
+ 
+  </section>
+
+  <!-- Letter Modal -->
+  <div class="letter-modal" id="letterModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="letter-content">
+        <div class="letter-header">
+          <div class="letter-date" id="letterDate"></div>
+          <div class="letter-title" id="letterTitle"></div>
+        </div>
+        <div class="letter-body" id="letterBody"></div>
+        <div class="letter-signature">
+          <span class="signature-text">With all my love,</span>
+          <span class="signature-name">Your Love</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer style="background:#fdf4fa; color:#333; text-align:center; padding:25px 10px; font-family:'Poppins', sans-serif;">
+    <h3 style="margin:0; font-size:15px; font-weight:600; letter-spacing:1px;">Made by Saurabh</h3>
+    <p style="margin:8px 0 0; font-size:14px; color:#666; font-style:italic;">© 2025 All Rights Reserved</p>
+  </footer>
+ 
+
+  <script src="letter.js"></script>
+  <script src="navbar.js"></script>
+
+</body>
+</html>

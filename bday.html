@@ -1,0 +1,2445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="navbar.css" />
+  <link rel="stylesheet" href="bday.css" />
+
+  <style>
+    /* Remove page-specific overrides - use navbar.css */
+
+    /* Animation Keyframes */
+    @keyframes bgShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Festive Background */
+    body {
+      background: linear-gradient(135deg, #fdf4fa, #f0f8ff);
+      overflow-x: hidden;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes floatSideways {
+      0% {
+        transform: translateX(0px);
+      }
+
+      50% {
+        transform: translateX(15px);
+      }
+
+      100% {
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+
+      25% {
+        transform: scale(1.1);
+      }
+
+      40% {
+        transform: scale(1);
+      }
+
+      60% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100%) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    @keyframes ribbon-wave {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-5px) rotate(2deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    /* Popup Styles */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #ff6b9e, #a770ef, #cf8bf3, #70e1f5);
+      background-size: 300% 300%;
+      animation: bgShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+      overflow: hidden;
+    }
+
+    .popup::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.3"/></svg>');
+      animation: rotate 120s linear infinite;
+      opacity: 0.4;
+    }
+
+    .popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Floating Particles */
+    .popup::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 8%),
+        radial-gradient(circle at 75% 55%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 6%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 7%),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 5%);
+      pointer-events: none;
+    }
+
+    /* Floating Elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-heart,
+    .floating-star,
+    .floating-circle {
+      position: absolute;
+      opacity: 0.6;
+      animation-duration: 6s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    .floating-heart {
+      font-size: 24px;
+      animation-name: float;
+    }
+
+    .floating-heart:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-heart:nth-child(2) {
+      top: 30%;
+      right: 20%;
+      animation-delay: 1s;
+    }
+
+    .floating-heart:nth-child(3) {
+      bottom: 30%;
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .floating-star {
+      font-size: 20px;
+      animation-name: floatSideways;
+    }
+
+    .floating-star:nth-child(4) {
+      top: 15%;
+      right: 15%;
+      animation-delay: 1.5s;
+    }
+
+    .floating-star:nth-child(5) {
+      bottom: 20%;
+      right: 30%;
+      animation-delay: 0.5s;
+    }
+
+    .floating-star:nth-child(6) {
+      top: 40%;
+      left: 15%;
+      animation-delay: 2.5s;
+    }
+
+    .floating-circle {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      animation-name: float;
+    }
+
+    .floating-circle:nth-child(7) {
+      top: 25%;
+      right: 10%;
+      width: 10px;
+      height: 10px;
+      animation-delay: 3s;
+    }
+
+    .floating-circle:nth-child(8) {
+      bottom: 15%;
+      left: 20%;
+      width: 8px;
+      height: 8px;
+      animation-delay: 1.5s;
+    }
+
+    /* Popup Content */
+    .popup-content {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 40px;
+      text-align: center;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset,
+        0 5px 15px rgba(255, 107, 158, 0.35);
+      max-width: 90%;
+      width: 600px;
+      color: var(--text);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      transform: translateY(0);
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .popup-content::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      border-radius: 40px;
+      background: linear-gradient(45deg, #ff6b9e, transparent, #a770ef, transparent, #70e1f5);
+      background-size: 400% 400%;
+      animation: bgShift 15s ease infinite;
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(15px);
+    }
+
+    /* Popup Decorations */
+    .popup-decoration {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef);
+      opacity: 0.7;
+      z-index: 1;
+    }
+
+    .popup-decoration.top-left {
+      top: -10px;
+      left: -10px;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .popup-decoration.top-right {
+      top: -10px;
+      right: -10px;
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .popup-decoration.bottom-left {
+      bottom: -10px;
+      left: -10px;
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .popup-decoration.bottom-right {
+      bottom: -10px;
+      right: -10px;
+      animation: pulse 4s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    .popup-content h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 25px;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      position: relative;
+      display: inline-block;
+    }
+
+    .popup-content h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff6b9e, #a770ef, #ff6b9e, transparent);
+      border-radius: 50%;
+    }
+
+    .popup-content p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    /* Countdown Footer */
+    .countdown-footer {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .heart-pulse {
+      font-size: 28px;
+      display: inline-block;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    /* Countdown Styles */
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      #countdown {
+        gap: 10px;
+      }
+
+      .time-block span:first-child {
+        font-size: 2.5rem;
+        min-width: 60px;
+      }
+
+      .popup-content {
+        padding: 30px 20px;
+        max-width: 95%;
+      }
+
+      .birthday-content h2 {
+        font-size: 2.5rem;
+      }
+
+      .celebrate-btn {
+        padding: 12px 25px;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #countdown {
+        gap: 5px;
+      }
+
+      .time-block span:first-child {
+        font-size: 2rem;
+        min-width: 50px;
+      }
+
+      .time-label {
+        font-size: 0.8rem;
+      }
+
+      .birthday-content h2 {
+        font-size: 2rem;
+      }
+    }
+
+    #countdown::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+      z-index: -1;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .time-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .time-block::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 107, 158, 0.15) 0%, rgba(255, 107, 158, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: pulse 3s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.5s);
+    }
+
+    .time-block:nth-child(1) {
+      --i: 0;
+    }
+
+    .time-block:nth-child(2) {
+      --i: 1;
+    }
+
+    .time-block:nth-child(3) {
+      --i: 2;
+    }
+
+    .time-block:nth-child(4) {
+      --i: 3;
+    }
+
+    .time-block span:first-child {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      min-width: 80px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .time-block span:first-child::after {
+      content: '';
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0;
+      transform: scale(0);
+      animation: sparkle 3s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.5s);
+    }
+
+    .time-label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      margin-top: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .time-label::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff6b9e, transparent);
+      border-radius: 50%;
+    }
+
+    /* Confetti Container */
+    .confetti-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5);
+      opacity: 0.7;
+      animation: confetti-fall 10s linear infinite;
+    }
+
+    .confetti:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .confetti:nth-child(2) {
+      left: 20%;
+      animation-delay: 1s;
+    }
+
+    .confetti:nth-child(3) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .confetti:nth-child(4) {
+      left: 40%;
+      animation-delay: 0.5s;
+    }
+
+    .confetti:nth-child(5) {
+      left: 50%;
+      animation-delay: 1.5s;
+    }
+
+    .confetti:nth-child(6) {
+      left: 60%;
+      animation-delay: 2.5s;
+    }
+
+    .confetti:nth-child(7) {
+      left: 70%;
+      animation-delay: 0.2s;
+    }
+
+    .confetti:nth-child(8) {
+      left: 80%;
+      animation-delay: 1.2s;
+    }
+
+    .confetti:nth-child(9) {
+      left: 90%;
+      animation-delay: 2.2s;
+    }
+
+    .confetti:nth-child(10) {
+      left: 25%;
+      animation-delay: 0.8s;
+    }
+
+    .confetti:nth-child(11) {
+      left: 65%;
+      animation-delay: 1.8s;
+    }
+
+    .confetti:nth-child(12) {
+      left: 85%;
+      animation-delay: 2.8s;
+    }
+
+    .confetti:nth-child(odd) {
+      background: linear-gradient(135deg, #ff6b9e, #a770ef);
+      height: 12px;
+      width: 8px;
+      animation-duration: 8s;
+    }
+
+    .confetti:nth-child(4n) {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #ff6b9e;
+    }
+
+    .confetti:nth-child(4n+1) {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #a770ef;
+    }
+
+    /* Birthday Popup Styles */
+    .birthday-content {
+      padding: 60px;
+      background: linear-gradient(135deg, #e8d5ff 0%, #ffd1e8 50%, #f0c4ff 100%);
+      position: relative;
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      width: 60%;
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Audio Notice Styles */
+    .audio-notice {
+      margin: 15px auto 5px;
+      padding: 8px 15px;
+      background: rgba(255, 107, 158, 0.2);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: #333;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 10px rgba(255, 107, 158, 0.3);
+    }
+
+    /* Celebrate Button Styles */
+    .celebrate-btn {
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 107, 158, 0.3);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+      display: block;
+    }
+
+    .celebrate-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(255, 107, 158, 0.4);
+    }
+
+    /* Close Button for Birthday Popup */
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #ff6b9e;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .popup-close:hover {
+      background: #ff6b9e;
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    /* Balloons Animation */
+    .balloons-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .balloon {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floatBalloon 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+
+    .balloon-1 {
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+      color: #ff6b9d;
+    }
+
+    .balloon-2 {
+      top: 15%;
+      right: 8%;
+      animation-delay: 0.8s;
+      color: #4ecdc4;
+    }
+
+    .balloon-3 {
+      top: 25%;
+      left: 15%;
+      animation-delay: 1.6s;
+      color: #ffe66d;
+    }
+
+    .balloon-4 {
+      top: 30%;
+      right: 20%;
+      animation-delay: 2.4s;
+      color: #a8e6cf;
+    }
+
+    .balloon-5 {
+      top: 20%;
+      left: 50%;
+      animation-delay: 3.2s;
+      color: #ff8b94;
+    }
+
+    @keyframes floatBalloon {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(-2deg);
+        opacity: 0.8;
+      }
+
+      25% {
+        transform: translateY(-15px) rotate(2deg);
+        opacity: 1;
+      }
+
+      50% {
+        transform: translateY(-25px) rotate(-1deg);
+        opacity: 0.9;
+      }
+
+      75% {
+        transform: translateY(-10px) rotate(1deg);
+        opacity: 1;
+      }
+    }
+
+    /* Glowing Particles */
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(255, 110, 199, 0.8), rgba(168, 85, 247, 0.4));
+      border-radius: 50%;
+      animation: floatParticle 8s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(255, 110, 199, 0.6);
+    }
+
+    .particle-1 {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 6s;
+    }
+
+    .particle-2 {
+      top: 30%;
+      right: 15%;
+      animation-delay: 1s;
+      animation-duration: 7s;
+    }
+
+    .particle-3 {
+      top: 50%;
+      left: 5%;
+      animation-delay: 2s;
+      animation-duration: 8s;
+    }
+
+    .particle-4 {
+      top: 60%;
+      right: 10%;
+      animation-delay: 3s;
+      animation-duration: 6s;
+    }
+
+    .particle-5 {
+      top: 15%;
+      left: 50%;
+      animation-delay: 4s;
+      animation-duration: 7s;
+    }
+
+    .particle-6 {
+      top: 70%;
+      left: 30%;
+      animation-delay: 5s;
+      animation-duration: 8s;
+    }
+
+    .particle-7 {
+      top: 25%;
+      right: 40%;
+      animation-delay: 1.5s;
+      animation-duration: 6s;
+    }
+
+    .particle-8 {
+      top: 80%;
+      right: 25%;
+      animation-delay: 2.5s;
+      animation-duration: 7s;
+    }
+
+    @keyframes floatParticle {
+
+      0%,
+      100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.3;
+      }
+
+      25% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: translateY(-10px) translateX(-15px);
+        opacity: 1;
+      }
+
+      75% {
+        transform: translateY(-30px) translateX(5px);
+        opacity: 0.6;
+      }
+    }
+
+    /* Firecrackers Animation */
+    .firecrackers-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .firecracker {
+      position: absolute;
+      font-size: 2rem;
+      animation: explode 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+
+    .firecracker-1 {
+      top: 5%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .firecracker-2 {
+      top: 8%;
+      right: 12%;
+      animation-delay: 0.5s;
+    }
+
+    .firecracker-3 {
+      top: 12%;
+      left: 25%;
+      animation-delay: 1s;
+    }
+
+    .firecracker-4 {
+      top: 15%;
+      right: 25%;
+      animation-delay: 1.5s;
+    }
+
+    .firecracker-5 {
+      top: 18%;
+      left: 40%;
+      animation-delay: 2s;
+    }
+
+    .firecracker-6 {
+      top: 10%;
+      right: 40%;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+      }
+
+      40% {
+        transform: scale(0.8) rotate(360deg);
+        opacity: 0.8;
+      }
+
+      60% {
+        transform: scale(1.5) rotate(540deg);
+        opacity: 1;
+      }
+
+      80% {
+        transform: scale(0.3) rotate(720deg);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(0) rotate(900deg);
+        opacity: 0;
+      }
+    }
+
+    .birthday-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 107, 158, 0.1) 0%, rgba(255, 107, 158, 0) 50%),
+        radial-gradient(circle at 90% 90%, rgba(167, 112, 239, 0.1) 0%, rgba(167, 112, 239, 0) 50%),
+        radial-gradient(circle at 90% 10%, rgba(112, 225, 245, 0.1) 0%, rgba(112, 225, 245, 0) 50%),
+        radial-gradient(circle at 10% 90%, rgba(255, 107, 158, 0.1) 0%, rgba(255, 107, 158, 0) 50%);
+      z-index: -1;
+    }
+
+    /* Birthday Ribbons */
+    .birthday-ribbon {
+      position: absolute;
+      width: 30px;
+      height: 120px;
+      background: linear-gradient(to bottom, #ff6b9e, #a770ef);
+      z-index: 1;
+      animation: ribbon-wave 3s ease-in-out infinite;
+    }
+
+    .birthday-ribbon.left {
+      top: -20px;
+      left: 20px;
+      transform: rotate(-30deg);
+      animation-delay: 0.5s;
+    }
+
+    .birthday-ribbon.right {
+      top: -20px;
+      right: 20px;
+      transform: rotate(30deg);
+      animation-delay: 1s;
+    }
+
+    .birthday-content h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+      position: relative;
+      display: inline-block;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .birthday-content h2::before,
+    .birthday-content h2::after {
+      content: '❤';
+      position: absolute;
+      font-size: 1.5rem;
+      color: #ff6b9e;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .birthday-content h2::before {
+      left: -30px;
+      top: 0;
+      animation-delay: 0.5s;
+    }
+
+    .birthday-content h2::after {
+      right: -30px;
+      top: 0;
+      animation-delay: 1s;
+    }
+
+    .birthday-image {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-frame {
+      position: relative;
+      display: inline-block;
+      padding: 15px;
+      background: linear-gradient(45deg, #ff6ec7, #a855f7, #ec4899, #d946ef);
+      border-radius: 25px;
+      box-shadow:
+        0 0 30px rgba(255, 110, 199, 0.6),
+        0 0 60px rgba(168, 85, 247, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+      animation: dreamyGlow 3s ease-in-out infinite alternate;
+    }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(45deg, #ff6ec7, #a855f7, #ec4899, #d946ef);
+      border-radius: 28px;
+      z-index: -1;
+      filter: blur(8px);
+      opacity: 0.7;
+    }
+
+    .birthday-image img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 20px;
+      background: transparent !important;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .birthday-image:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Image Frame */
+    .image-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 5px solid rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .birthday-image::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #ff6b9e, #a770ef, #70e1f5, #ff6b9e);
+      background-size: 400% 400%;
+      animation: bgShift 15s ease infinite;
+      z-index: -1;
+      border-radius: 25px;
+      filter: blur(15px);
+      opacity: 0.7;
+    }
+
+    .birthday-image img {
+      max-width: 300px;
+      height: auto;
+      border-radius: 20px;
+      background: transparent !important;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes dreamyGlow {
+      0% {
+        box-shadow:
+          0 0 30px rgba(255, 110, 199, 0.8),
+          0 0 60px rgba(168, 85, 247, 0.6),
+          inset 0 0 20px rgba(255, 255, 255, 0.2);
+        transform: scale(1);
+      }
+
+      100% {
+        box-shadow:
+          0 0 40px rgba(168, 85, 247, 0.9),
+          0 0 80px rgba(255, 110, 199, 0.7),
+          inset 0 0 25px rgba(255, 255, 255, 0.3);
+        transform: scale(1.02);
+      }
+    }
+
+    /* Birthday Message */
+    .birthday-message {
+      margin-top: 25px;
+      position: relative;
+      padding: 0 20px;
+    }
+
+    .birthday-message p {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #7c3aed;
+      text-align: center;
+      margin: 0;
+      line-height: 1.4;
+      text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        color: #7c3aed;
+      }
+
+      100% {
+        text-shadow: 0 0 30px rgba(236, 72, 153, 0.7);
+        color: #a855f7;
+      }
+    }
+
+    .birthday-message p::before,
+    .birthday-message p::after {
+      content: '"';
+      font-size: 1.5rem;
+      color: #ff6b9e;
+      position: absolute;
+      opacity: 0.7;
+    }
+
+    .birthday-message p::before {
+      left: -15px;
+      top: -5px;
+    }
+
+    .birthday-message p::after {
+      right: -15px;
+      bottom: -5px;
+    }
+
+
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .popup-content {
+        padding: 30px 20px;
+        width: 90%;
+      }
+
+      #countdown {
+        gap: 15px;
+      }
+
+      .time-block span:first-child {
+        font-size: 2.5rem;
+        min-width: 60px;
+      }
+
+      .time-label {
+        font-size: 0.9rem;
+      }
+
+      .birthday-content h2 {
+        font-size: 2.5rem;
+      }
+
+      .birthday-content h2::before,
+      .birthday-content h2::after {
+        font-size: 1.2rem;
+      }
+
+      .birthday-ribbon {
+        height: 100px;
+        width: 25px;
+      }
+
+      .birthday-message p {
+        font-size: 1.1rem;
+      }
+
+      .audio-notice {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+
+
+    }
+
+    @media (max-width: 480px) {
+      .time-block span:first-child {
+        font-size: 2rem;
+        min-width: 50px;
+      }
+
+      .time-label {
+        font-size: 0.8rem;
+      }
+
+      .birthday-content h2 {
+        font-size: 2rem;
+      }
+
+      .birthday-content h2::before,
+      .birthday-content h2::after {
+        font-size: 1rem;
+        top: -5px;
+      }
+
+      .birthday-content h2::before {
+        left: -20px;
+      }
+
+      .birthday-content h2::after {
+        right: -20px;
+      }
+
+      .birthday-ribbon {
+        height: 80px;
+        width: 20px;
+      }
+
+      .birthday-ribbon.left {
+        left: 10px;
+      }
+
+      .birthday-ribbon.right {
+        right: 10px;
+      }
+
+      .popup-decoration {
+        width: 30px;
+        height: 30px;
+      }
+
+      .birthday-message p {
+        font-size: 1rem;
+      }
+
+      .birthday-message p::before,
+      .birthday-message p::after {
+        font-size: 1.2rem;
+      }
+
+      .audio-notice {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin: 10px auto 5px;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Beautiful Romantic Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="bday.html">
+          <img src="images/logo.png" alt="Shaily Birthday Logo" class="navbar-logo-img">
+        </a>
+      </div>
+      <ul class="nav-menu">
+
+        <li class="nav-item">
+          <a href="bday.html" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="story.html" class="nav-link">Our Journey</a>
+        </li>
+        <li class="nav-item">
+          <a href="favorite.html" class="nav-link ">My Girl's Favorite</a>
+        </li>
+        <li class="nav-item">
+          <a href="letter.html" class="nav-link">Letter's</a>
+        </li>
+        <li class="nav-item">
+          <a href="playlist.html" class="nav-link">Playlist</a>
+        </li>
+        <li class="nav-item">
+          <a href="gift.html" class="nav-link">Gifts</a>
+        </li>
+      </ul>
+      <div class="nav-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Countdown Popup -->
+  <div id="countdown-popup" class="popup">
+    <div class="floating-elements" aria-hidden="true">
+      <span class="floating-heart">❤️</span>
+      <span class="floating-heart">❤️</span>
+      <span class="floating-heart">❤️</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-circle"></span>
+      <span class="floating-circle"></span>
+    </div>
+    <div class="popup-content">
+      <div class="popup-decoration top-left"></div>
+      <div class="popup-decoration top-right"></div>
+      <div class="popup-decoration bottom-left"></div>
+      <div class="popup-decoration bottom-right"></div>
+      <h2>Coming Soon!</h2>
+      <p>Exciting things are on the way. The countdown has begun!</p>
+      <div id="countdown">
+        <div class="time-block">
+          <span id="days">00</span>
+          <span class="time-label">Days</span>
+        </div>
+        <div class="time-block">
+          <span id="hours">00</span>
+          <span class="time-label">Hours</span>
+        </div>
+        <div class="time-block">
+          <span id="minutes">00</span>
+          <span class="time-label">Minutes</span>
+        </div>
+        <div class="time-block">
+          <span id="seconds">00</span>
+          <span class="time-label">Seconds</span>
+        </div>
+      </div>
+      <div class="countdown-footer">
+        <p>Until something special happens! <span class="heart-pulse">❤️</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Magical Words Input Popup -->
+  <div id="magical-words-popup" class="popup">
+    <div class="floating-elements" aria-hidden="true">
+      <span class="floating-heart">💖</span>
+      <span class="floating-heart">💕</span>
+      <span class="floating-heart">💝</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-star">🌟</span>
+      <span class="floating-star">💫</span>
+      <span class="floating-circle"></span>
+      <span class="floating-circle"></span>
+    </div>
+    <div class="popup-content">
+      <div class="popup-decoration top-left"></div>
+      <div class="popup-decoration top-right"></div>
+      <div class="popup-decoration bottom-left"></div>
+      <div class="popup-decoration bottom-right"></div>
+      <h2
+        style="background: linear-gradient(45deg, #c7154c, #EB0C56, #ff6b9e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2.2rem; text-align: center; margin-bottom: 20px; animation: heartbeat 2s infinite;">
+        🔮 Magical Moment 🔮
+      </h2>
+      <div style="text-align: center; margin: 25px 0;">
+        <p style="font-size: 1.3rem; color: #c7154c; margin-bottom: 20px; font-weight: 600;">
+          Type three magical words to unlock 💖
+        </p>
+        <div style="position: relative; margin: 20px 0;">
+          <input type="text" id="magical-input" placeholder="Enter the magic words..."
+            style="width: 100%; max-width: 350px; padding: 15px 20px; font-size: 1.1rem; border: 2px solid #c7154c; border-radius: 25px; text-align: center; outline: none; background: rgba(255,255,255,0.9); color: #333; font-family: inherit; animation: magical-glow 3s infinite;">
+        </div>
+        <button id="unlock-button"
+          style="background: #c7154c; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 25px; cursor: pointer; margin-top: 15px; transition: all 0.3s ease; font-weight: 600;">
+          Unlock the Magic ✨
+        </button>
+        <div id="error-message"
+          style="display: none; color: #ff6b9e; font-size: 1rem; margin-top: 15px; animation: shake 0.5s;">
+          Oops! That's not magical enough ✨
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Birthday Popup -->
+  <div id="birthday-popup" class="popup">
+    <div class="confetti-container" aria-hidden="true">
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+      <div class="confetti"></div>
+    </div>
+    <div class="floating-elements" aria-hidden="true">
+      <span class="floating-heart">❤️</span>
+      <span class="floating-heart">❤️</span>
+      <span class="floating-heart">❤️</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-star">✨</span>
+      <span class="floating-star">✨</span>
+    </div>
+    <div class="popup-content birthday-content">
+      <button class="popup-close" id="birthday-popup-close">×</button>
+      <div class="birthday-ribbon left"></div>
+      <div class="birthday-ribbon right"></div>
+
+      <div class="birthday-image">
+        <div class="photo-frame">
+          <img src="images/bday.png" alt="Birthday Image">
+        </div>
+      </div>
+
+      <!-- Glowing Particles Background -->
+      <div class="particles-container">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+        <div class="particle particle-7"></div>
+        <div class="particle particle-8"></div>
+      </div>
+
+      <!-- Animated Balloons -->
+      <div class="balloons-container">
+        <div class="balloon balloon-1">🎈</div>
+        <div class="balloon balloon-2">🎈</div>
+        <div class="balloon balloon-3">🎈</div>
+        <div class="balloon balloon-4">🎈</div>
+        <div class="balloon balloon-5">🎈</div>
+      </div>
+
+      <!-- Animated Firecrackers -->
+      <div class="firecrackers-container">
+        <div class="firecracker firecracker-1">🎆</div>
+        <div class="firecracker firecracker-2">🎇</div>
+        <div class="firecracker firecracker-3">🎆</div>
+        <div class="firecracker firecracker-4">🎇</div>
+        <div class="firecracker firecracker-5">✨</div>
+        <div class="firecracker firecracker-6">💥</div>
+      </div>
+      <div class="birthday-message">
+        <p>Wishing you a day filled with happiness and a year filled with joy!</p>
+      </div>
+
+      <audio id="birthday-song" loop>
+        <source src="Music/Happy Birthday Song!!! (mp3cut.net).mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
+
+
+  <main id="main-content">
+    <section id="home" class="hero" aria-label="Home">
+      <div class="animated-bg" aria-hidden="true"></div>
+
+
+
+      <div class="hero-inner">
+        <!-- <p class="eyebrow">Happy Birthday</p> -->
+        <h1>
+          Happy Birthday
+          <div class="typewriter-container">
+            <span class="typewriter-text" id="typewriter">My Love</span>
+            <span class="typewriter-cursor"></span>
+          </div>
+        </h1>
+        <p class="subtitle">
+          💫 “Every moment with you ✨ is priceless.        </p>
+       
+      </div>
+      </div>
+    </section>
+
+
+    <!-- Celebrating 25 Years Section -->
+    <section id="celebration" class="celebration-section" aria-label="Celebrating 25 Years"
+      data-anniversary="2000-09-08T00:00:00">
+      <div class="container">
+        <div class="celebration-simple">
+          <h2 class="celebration-heading">
+            Celebrating <span class="highlight-25">25</span> Years
+
+          </h2>
+          <p class="celebration-note">A quarter century of love, laughter, and beautiful memories together.</p>
+
+          <div class="anniv-live" id="anniv-live" aria-live="polite">
+            <div class="anniv-meta">
+              <span class="since-label">Since</span>
+              <time class="since-date" id="anniv-date">—</time>
+            </div>
+            <div class="anniv-grid totals">
+              <div class="metric">
+                <div class="metric-value" id="total-years">0</div>
+                <div class="metric-label">Total Age</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-months">0</div>
+                <div class="metric-label">Total Months</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-weeks">0</div>
+                <div class="metric-label">Total Weeks</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-days">0</div>
+                <div class="metric-label">Total Days</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-hours">0</div>
+                <div class="metric-label">Total Hours</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-minutes">0</div>
+                <div class="metric-label">Total Minutes</div>
+              </div>
+              <div class="metric">
+                <div class="metric-value" id="total-seconds">0</div>
+                <div class="metric-label">Total Seconds</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Words section -->
+    <section id="words" class="words" aria-label="My words for my girl">
+      <div class="container">
+        <div class="words-card">
+          <div class="quote deco start">“</div>
+          <h2>Birthday Note for You</h2>
+          <p>
+            On this very day, you came into this beautiful world, and today you’ve completed 25 wonderful years. You're
+            a
+            little mischievous, a little stubborn, but no matter what, you're my sweet little soul. Calling myself lucky
+            wouldn’t be wrong, because today I have you by my side. Your innocence is childlike, yet the love you gives
+            is pure like a mother’s.
+          </p>
+          <p>
+            With every smile of yours, my world feels brighter. With every hug, my heart feels lighter. You are not just
+            my love, you is my safe place, my happiness, my forever. Thank you, God, for blessing me with this rare
+            Kohinoor and making her a part of my life — not just for today, but for all the tomorrows to come.
+          </p>
+          <div class="quote deco end">”</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery: Masonry Grid -->
+    <section id="grid-gallery" class="gallery" aria-label="Photo gallery">
+      <div class="container">
+        <h2 class="gallery-title">My Girl</h2>
+        <div class="masonry-grid">
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Beautiful moment">
+            <img src="MyGirl/IMG_2418.JPG" alt="Beautiful moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Gorgeous pic">
+            <img src="MyGirl/Snapchat-1035638443.jpg" alt="Gorgeous pic">
+          </a>
+
+          <a class="gallery-item span-5 ratio-3x4" href="#" aria-label="Lovely moment">
+            <img src="MyGirl/IMG_2436.JPG" alt="Lovely moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Precious moment">
+            <img src="MyGirl/IMG_2433.JPG" alt="Precious moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Happy moment">
+            <img src="MyGirl/IMG_2434.JPG" alt="Happy moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Cute selfie">
+            <img src="MyGirl/IMG_20250826_013408_607.jpg" alt="Cute selfie">
+          </a>
+          <a class="gallery-item span-3 ratio-3x4" href="#" aria-label="Adorable pic">
+            <img src="MyGirl/IMG_2411.JPG" alt="Adorable pic">
+          </a>
+          <a class="gallery-item span-3 ratio-3x4" href="#" aria-label="Sweet smile">
+            <img src="MyGirl/IMG_2435.JPG" alt="Sweet smile">
+          </a>
+          <a class="gallery-item span-6 ratio-4x3" href="#" aria-label="Beautiful memory">
+            <img src="MyGirl/itsshailyhere_14040605_013544291.jpg" alt="Beautiful memory">
+          </a>
+          <a class="gallery-item span-3 ratio-3x4" href="#" aria-label="Lovely pic">
+            <img src="MyGirl/IMG_2432.JPG" alt="Lovely pic">
+          </a>
+          <a class="gallery-item span-3 ratio-4x3" href="#" aria-label="Candid moment">
+            <img src="MyGirl/IMG-20250812-WA0003.jpg" alt="Candid moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Special moment">
+            <img src="MyGirl/IMG_2431.JPG" alt="Special moment">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Sweet memory">
+            <img src="MyGirl/Snapchat-1713193538.jpg" alt="Sweet memory">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Amazing shot">
+            <img src="MyGirl/IMG_2422.JPG" alt="Amazing shot">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Cute moment">
+            <img src="MyGirl/IMG_20250826_013408_661.jpg" alt="Cute moment">
+          </a>
+          <a class="gallery-item span-4 ratio-4x3" href="#" aria-label="Sweet pic">
+            <img src="MyGirl/IMG-20250415-WA0003.jpg" alt="Sweet pic">
+          </a>
+          <a class="gallery-item span-4 ratio-3x4" href="#" aria-label="Beautiful smile">
+            <img src="MyGirl/itsshailyhere_14040605_013521852.jpg" alt="Beautiful smile">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why I Love You Section -->
+    <section id="why-love" class="why-love-section" aria-label="Why I Love You">
+      <div class="container">
+        <div class="why-love-content">
+          <div class="why-love-text">
+            <h2 class="why-love-title">Why I Love You</h2>
+            <p class="why-love-paragraph">
+              I would like to start from this line — “Maine wo har pal khud ko sukoon me dekha hai, jab jab tumko khud
+              ke paas me dekha hai.”
+
+              You’ve given me everything I ever needed — the love of a friend, the love of a wife, and the love of a
+              mother. I know I tease you sometimes, but honestly, I love you more than anything.
+
+              The way you scold me, the way you show your right over me, the way you say ‘hmmm hmmm’ on our calls,
+              half-asleep, is the cutest thing ever. The way you angrily say ‘utha ke fek dugi’ just makes me smile even
+              more — these are the little things I love the most about you.
+
+              Whatever I lacked in life, you came and made it complete. I promise I will always support you, stand
+              beside you in every situation, be the reason behind the smile on your lips, make your dreams my own and
+              fulfill them, and fulfill every wish of yours like a father would.
+
+              All I need is your hand in mine at every step of this journey.
+              I love you more and more… ❤️
+            </p>
+          </div>
+          <div class="why-love-image">
+            <img src="MyGirl/bhalu.jpg" alt="Beautiful romantic couple" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Slider: my fav choose (Bootstrap) (restored below Why I Love You) -->
+
+
+    <!-- Music Story Section -->
+    <section id="music-story" class="music-story" aria-label="Our song">
+      <div class="container">
+        <div class="music-layout">
+          <div class="music-text">
+            <h2 class="music-title">Every song tells a story, here is ours</h2>
+            <div class="song-name-marquee">
+              <span>Rabta - Arijit Singh 🎵</span>
+            </div>
+
+            <div class="player" role="group" aria-label="Audio player">
+              <button class="play-btn" aria-label="Play" data-state="paused">
+                <svg class="icon play" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M8 5v14l11-7z" />
+                </svg>
+                <svg class="icon pause" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z" />
+                </svg>
+              </button>
+              <div class="progress-wrap">
+                <input type="range" class="progress" min="0" max="100" step="0.1" value="0" aria-label="Seek" />
+                <div class="time">
+                  <span class="current" aria-label="Current time">0:00</span>
+                  <span class="duration" aria-label="Duration">0:00</span>
+                </div>
+              </div>
+              <audio id="love-audio" preload="metadata">
+                <source src="Music/Rabta.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+          <div class="music-cover">
+            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=900&auto=format&fit=crop"
+              alt="Our song cover" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="img-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="img-modal-backdrop"></div>
+      <div class="img-modal-content" role="document">
+        <button class="img-modal-close" aria-label="Close">×</button>
+        <img class="img-modal-photo" src="" alt="Full image" />
+        <div class="img-modal-text">
+          <h3 class="img-modal-title"></h3>
+          <p class="img-modal-desc"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Love Video Section (full width) -->
+    <section id="love-video" class="video-section full" aria-label="Our video">
+      <div class="video-frame">
+        <video class="video" controls autoplay playsinline muted loop preload="metadata">
+          <source src="https://cdn.pixabay.com/video/2023/03/01/152798-803733100_large.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+    <!-- Placeholder sections for smooth scrolling targets -->
+    <section id="wishes" class="placeholder" aria-label="Wishes"></section>
+
+    <!-- Cute Moments Section -->
+    <section id="cute-moments" class="cute-moments-section" aria-label="Cute Moments Gallery">
+      <div class="container">
+        <h2 class="cute-moments-title">Cute Moments</h2>
+        <div class="masonry-grid">
+          <!-- Mixed images and videos from Moments folder -->
+          <div class="grid-item image-card">
+            <img src="Moments/PXL_20250505_183847429.NIGHT.jpg" alt="Night photo" loading="lazy">
+         
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Shaily_cute1.mp4" type="video/mp4">
+            </video>
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1043718980.jpg" alt="Snapchat memory" loading="lazy">
+         
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/PXL_20250505_183925662.NIGHT.jpg" alt="Another night photo" loading="lazy">
+            
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-1085364435.mp4" type="video/mp4">
+            </video>
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1067435285.jpg" alt="Another snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/hand meet.jpg" alt="Snapchat moment" loading="lazy">
+      
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Shaily_cute2.mp4" type="video/mp4">
+            </video>
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1337569676.jpg" alt="Snap pic" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1624871815.jpg" alt="Beautiful snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-1173411021.mp4" type="video/mp4">
+            </video>
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1732976285.jpg" alt="Snap moment" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Shaily_cute3.mp4" type="video/mp4">
+            </video>
+          
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1756159651.jpg" alt="Sweet snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1809592288.jpg" alt="Lovely snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-1352657283.mp4" type="video/mp4">
+            </video>
+         
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-1908832456.jpg" alt="Precious snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-1619045052.mp4" type="video/mp4">
+            </video>
+        
+          </div>
+
+          <div class="grid-item image-card">
+            <img src="Moments/Snapchat-862961748.jpg" alt="Final snap" loading="lazy">
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-2012727429.mp4" type="video/mp4">
+            </video>
+          
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-702488004.mp4" type="video/mp4">
+            </video>
+           
+          </div>
+
+          <div class="grid-item video-card">
+            <video class="moment-video" muted loop preload="metadata" volume="0">
+              <source src="Moments/Snapchat-811831756.mp4" type="video/mp4">
+            </video>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="gallery" class="fav" aria-label="My favorite choices">
+      <div class="container">
+        <h2 class="fav-title">Dreams We’ll Turn Into Reality 🌸</h2>
+        <div id="favCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+          data-bs-pause="hover" data-bs-touch="true">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Sunset by the sea"
+                    data-desc="This reminds me of our calm evenings and warm talks."
+                    data-img="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/engaged.jpg" alt="Sunset over ocean">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">One day, this will be us 💍</h5>
+                   
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="City lights"
+                    data-desc="Because the world feels brighter when we're together."
+                    data-img="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/jaimala.jpg" alt="Shiny city lights at night">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Our dreamy wedding night ✨</h5>
+                
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Green escape"
+                    data-desc="You bring peace to my heart like a quiet forest."
+                    data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/phere.jpg" alt="Lush green forest path">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Our new chapter, hand in hand 🕊️</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Cozy coffee"
+                    data-desc="Because your smile tastes like the first sip of coffee."
+                    data-img="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/sindoor.jpg" alt="Cup of coffee on table">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Someday, I’ll fill your maang with love ❤️</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Blooming days"
+                    data-desc="You make everything bloom beautifully around me.lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
+                    data-img="https://images.unsplash.com/photo-1435783459217-ee7fe5414abe?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/grah pravesh.jpg" alt="Pink flowers in bloom">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Stepping into our new life together 👣</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Blue horizon"
+                    data-desc="Dreams as wide as the sky when I'm with you."
+                    data-img="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/ring rasam.png" alt="Blue sky and sea">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Our little playful rituals 💕</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Golden field"
+                    data-desc="Because your laughter is sunshine to me."
+                    data-img="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/1st night.jpg" alt="Golden wheat field">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Just you, me & endless love ✨</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Starry night"
+                    data-desc="Every star reminds me of you."
+                    data-img="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/honeymoon.jpg" alt="Starry night sky">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">Our dream escape together 🌊</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="card h-100" tabindex="0" data-title="Coastal road"
+                    data-desc="Adventures are better together."
+                    data-img="https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=1600&auto=format&fit=crop">
+                    <img class="card-img-top" src="images/baby arrival.jpg" alt="Coastal road">
+                    <div class="image-overlay">
+                      <h5 class="overlay-title">The tiniest dream we’ll hold in our hands 👶💖</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#favCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#favCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Final Love Section -->
+    <section id="final-love" class="final-love" aria-label="Final message">
+      <div class="container">
+        <div class="final-inner">
+          <h2 class="final-title">
+            Forever & Always
+          </h2>
+          <p class="final-caption">
+            You are my today, all my tomorrows, and the sweetest part of every moment.
+          </p>
+          <button id="love-btn" class="btn primary final-btn" type="button">Click me</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Modal -->
+    <div class="love-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="love-backdrop"></div>
+      <!-- Celebration Overlay (balloons + fireworks) placed inside modal to avoid backdrop blur -->
+      <div class="celebration-overlay" aria-hidden="true">
+        <canvas class="fireworks-canvas"></canvas>
+        <div class="balloons-layer" aria-hidden="true"></div>
+      </div>
+      <!-- Popup-specific audio (use a different song here) -->
+      <audio id="popup-audio" preload="metadata">
+        <source src="Music/love_you.mp3" type="audio/mpeg" />
+      </audio>
+      <div class="love-content" role="document">
+        <button class="love-close" aria-label="Close">×</button>
+        <div class="love-heartburst" aria-hidden="true">
+          <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span>
+        </div>
+        <h3 class="love-title">I love you</h3>
+        <p class="love-sub">More than words, beyond time, always and forever.</p>
+      </div>
+    </div>
+    <footer
+      style="background:#fdf4fa; color:#333; text-align:center; padding:25px 10px; font-family:'Poppins', sans-serif;">
+      <h3 style="margin:0; font-size:15px; font-weight:600; letter-spacing:1px;">Made by Saurabh</h3>
+      <p style="margin:8px 0 0; font-size:14px; color:#666; font-style:italic;">© 2025 All Rights Reserved</p>
+    </footer>
+
+  </main>
+  </div> <!-- End of main-content div -->
+
+  <script>
+    // Video autoplay and hover-to-unmute functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const videos = document.querySelectorAll('.moment-video');
+
+      videos.forEach(video => {
+        const videoCard = video.closest('.video-card');
+
+        // Autoplay video when it comes into view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(e => console.log('Video autoplay failed:', e));
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(videoCard);
+
+        // Hover to unmute
+        videoCard.addEventListener('mouseenter', () => {
+          video.muted = false;
+          video.volume = 0.7;
+        });
+
+        // Click to pause, mouseleave to resume and mute
+        videoCard.addEventListener('click', () => {
+          video.pause();
+        });
+
+        videoCard.addEventListener('mouseleave', () => {
+          video.muted = true;
+          if (video.paused) {
+            video.play();
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize audio state
+      let audioEnabled = false;
+      const birthdaySong = document.getElementById('birthday-song');
+
+      // Add event listener for birthday popup close button
+      const birthdayPopupClose = document.getElementById('birthday-popup-close');
+      if (birthdayPopupClose) {
+        birthdayPopupClose.addEventListener('click', function () {
+          // Hide birthday popup
+          document.getElementById('birthday-popup').classList.remove('active');
+
+          // Show main content if it's not already visible
+          const mainContent = document.getElementById('main-content');
+          mainContent.style.visibility = 'visible';
+          mainContent.style.opacity = '1';
+          mainContent.style.transition = 'opacity 0.5s ease, visibility 0.5s ease';
+
+          // Stop the song when popup is closed
+          if (birthdaySong) {
+            birthdaySong.pause();
+            birthdaySong.currentTime = 0;
+          }
+        });
+      }
+      // Set the birthday date (format: YYYY-MM-DD HH:MM:SS)
+      // For real event: September 8, 2025
+      // const birthdayDate = new Date('2025-09-08T00:00:00');
+
+      // Set countdown to 1 minute from now
+      const testDate = new Date();
+      testDate.setFullYear(2025);
+      testDate.setMonth(8); // 8 = September
+      testDate.setDate(7);  // 5th
+      testDate.setHours(0, 0, 0, 0);
+      const birthdayDate = testDate;
+
+      // For testing "during birthday" scenario, uncomment this and comment out the above
+      // const birthdayDate = new Date();
+
+      // For testing "after birthday" scenario, uncomment this and comment out the above
+      // const testDate = new Date();
+      // testDate.setDate(testDate.getDate() - 1); // Set to yesterday
+      // const birthdayDate = testDate;
+
+      // Elements
+      const countdownPopup = document.getElementById('countdown-popup');
+      const magicalWordsPopup = document.getElementById('magical-words-popup');
+      const birthdayPopup = document.getElementById('birthday-popup');
+      const mainContent = document.getElementById('main-content');
+      // birthdaySong is already declared at the top of the script
+
+      // Countdown elements
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      // Initially hide the main content
+      mainContent.style.visibility = 'hidden';
+      mainContent.style.opacity = '0';
+
+      // Get current date and time
+      const currentTime = new Date();
+
+      // Check if we're before, during, or after the birthday
+      const isBirthdayToday =
+        currentTime.getFullYear() === birthdayDate.getFullYear() &&
+        currentTime.getMonth() === birthdayDate.getMonth() &&
+        currentTime.getDate() === birthdayDate.getDate();
+
+      const isAfterBirthday =
+        (currentTime.getFullYear() > birthdayDate.getFullYear()) ||
+        (currentTime.getFullYear() === birthdayDate.getFullYear() &&
+          currentTime.getMonth() > birthdayDate.getMonth()) ||
+        (currentTime.getFullYear() === birthdayDate.getFullYear() &&
+          currentTime.getMonth() === birthdayDate.getMonth() &&
+          currentTime.getDate() > birthdayDate.getDate());
+
+      // Create celebrate button element (shared across scenarios)
+      const celebrateButton = document.createElement('button');
+      celebrateButton.id = 'celebrate-button';
+      celebrateButton.className = 'btn primary celebrate-btn';
+      celebrateButton.innerHTML = 'Celebrate 🎉';
+
+      // Add event listener to celebrate button
+      celebrateButton.addEventListener('click', function () {
+        // Hide countdown popup
+        countdownPopup.classList.remove('active');
+
+        // Show birthday popup
+        birthdayPopup.classList.add('active');
+
+        // Play birthday song when button is clicked
+        birthdaySong.play().then(() => {
+          birthdaySong.muted = false;
+        }).catch(error => {
+          console.error('Error playing audio:', error);
+        });
+      });
+
+      // Magical words validation function
+      function setupMagicalWordsValidation() {
+        const magicalInput = document.getElementById('magical-input');
+        const unlockButton = document.getElementById('unlock-button');
+        const errorMessage = document.getElementById('error-message');
+
+        function validateMagicalWords() {
+          const input = magicalInput.value.trim().toLowerCase();
+          const correctWords = 'i love you';
+
+          if (input === correctWords) {
+            // Correct! Hide magical words popup and show birthday popup
+            magicalWordsPopup.classList.remove('active');
+
+            // Show countdown popup with birthday content
+            countdownPopup.classList.add('active');
+
+            // Hide countdown elements and show birthday content
+            document.querySelector('#countdown').style.display = 'none';
+            const countdownPopupContent = countdownPopup.querySelector('.popup-content');
+            countdownPopupContent.querySelector('p').style.display = 'none';
+            countdownPopupContent.querySelector('.countdown-footer').style.display = 'none';
+
+            // Update the heading to birthday message
+            const heading = countdownPopupContent.querySelector('h2');
+            heading.innerHTML = ' Happy Birthday Cutipiee ';
+            heading.style.background = '#c7154c';
+            heading.style.webkitBackgroundClip = 'text';
+            heading.style.webkitTextFillColor = 'transparent';
+            heading.style.backgroundClip = 'text';
+            heading.style.fontSize = '2.5rem';
+            heading.style.fontWeight = 'bold';
+            heading.style.textAlign = 'center';
+            heading.style.marginBottom = '20px';
+
+            // Add beautiful birthday message
+            const birthdayMessage = document.createElement('div');
+            birthdayMessage.innerHTML = `
+            <div style="text-align: center; margin: 20px 0; animation: float-up 1s ease-out;">
+              <p style="font-size: 1.4rem; color: #2c3e50; margin-bottom: 15px; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                ✨ Today is your special day! ✨
+              </p>
+              <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px; line-height: 1.7; max-width: 400px; margin-left: auto; margin-right: auto;">
+                May this year bring you endless joy, beautiful moments, and all the happiness your heart can hold. 
+                You deserve all the love and celebration in the world! 💝
+              </p>
+              <div style="display: flex; justify-content: center; gap: 15px; margin: 20px 0;">
+                <span style="font-size: 2.2rem; animation: bounce 2s infinite; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🎂</span>
+                <span style="font-size: 2.2rem; animation: bounce 2s infinite 0.2s; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🎈</span>
+                <span style="font-size: 2.2rem; animation: bounce 2s infinite 0.4s; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🎁</span>
+                <span style="font-size: 2.2rem; animation: bounce 2s infinite 0.6s; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));">🌟</span>
+              </div>
+              <div style="margin: 15px 0; font-size: 1rem; color: #666; font-style: italic;">
+                "Another year of wonderful memories begins today!"
+              </div>
+              <div style="display: flex; justify-content: center; gap: 8px; margin-top: 15px;">
+                <span style="color: #ff6b9e; font-size: 1.2rem; animation: sparkle 1.5s infinite;">✨</span>
+                <span style="color: #feca57; font-size: 1.2rem; animation: sparkle 1.5s infinite 0.3s;">💫</span>
+                <span style="color: #48dbfb; font-size: 1.2rem; animation: sparkle 1.5s infinite 0.6s;">⭐</span>
+                <span style="color: #ff9ff3; font-size: 1.2rem; animation: sparkle 1.5s infinite 0.9s;">✨</span>
+              </div>
+            </div>
+          `;
+            countdownPopupContent.insertBefore(birthdayMessage, countdownPopupContent.querySelector('.countdown-footer') || celebrateButton);
+
+            countdownPopup.querySelector('.popup-content').appendChild(celebrateButton);
+
+            // Style the celebrate button for birthday scenario
+            celebrateButton.style.display = 'block';
+            celebrateButton.style.marginTop = '25px';
+            celebrateButton.style.padding = '15px 40px';
+            celebrateButton.style.fontSize = '1.3rem';
+            celebrateButton.style.fontWeight = '600';
+            celebrateButton.style.background = '#EB0C56';
+            celebrateButton.style.border = 'none';
+            celebrateButton.style.borderRadius = '50px';
+            celebrateButton.style.color = 'white';
+            celebrateButton.style.cursor = 'pointer';
+            celebrateButton.style.boxShadow = '0 8px 25px rgba(255, 107, 158, 0.4)';
+            celebrateButton.style.transition = 'all 0.3s ease';
+
+            // Add hover effect
+            celebrateButton.addEventListener('mouseenter', function () {
+              this.style.transform = 'translateY(-3px) scale(1.05)';
+              this.style.boxShadow = '0 12px 35px rgba(255, 107, 158, 0.6)';
+            });
+
+            celebrateButton.addEventListener('mouseleave', function () {
+              this.style.transform = 'translateY(0) scale(1)';
+              this.style.boxShadow = '0 8px 25px rgba(255, 107, 158, 0.4)';
+            });
+
+          } else {
+            // Wrong words - show error message
+            errorMessage.style.display = 'block';
+            magicalInput.style.animation = 'shake 0.5s';
+            magicalInput.style.borderColor = '#ff6b9e';
+
+            // Reset input animation and border after shake
+            setTimeout(() => {
+              magicalInput.style.animation = 'magical-glow 3s infinite';
+              magicalInput.style.borderColor = '#c7154c';
+              errorMessage.style.display = 'none';
+            }, 2000);
+
+            // Clear input
+            magicalInput.value = '';
+          }
+        }
+
+        // Add event listeners
+        unlockButton.addEventListener('click', validateMagicalWords);
+        magicalInput.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            validateMagicalWords();
+          }
+        });
+
+        // Add input focus effects
+        magicalInput.addEventListener('focus', function () {
+          this.style.transform = 'scale(1.02)';
+          this.style.boxShadow = '0 0 30px rgba(199, 21, 76, 0.4)';
+        });
+
+        magicalInput.addEventListener('blur', function () {
+          this.style.transform = 'scale(1)';
+          this.style.boxShadow = 'none';
+        });
+      }
+
+      // Handle the three scenarios
+      if (isAfterBirthday) {
+        // After birthday: Show content directly
+        mainContent.style.visibility = 'visible';
+        mainContent.style.opacity = '1';
+      } else if (isBirthdayToday) {
+        // During birthday: Show magical words popup first
+        magicalWordsPopup.classList.add('active');
+        setupMagicalWordsValidation();
+      } else {
+        // Before birthday: Show countdown
+        countdownPopup.classList.add('active');
+        countdownPopup.querySelector('.popup-content').appendChild(celebrateButton);
+        celebrateButton.style.display = 'none';
+        // Update countdown timer
+        function updateCountdown() {
+          const now = new Date();
+          const diff = birthdayDate - now;
+
+          // If birthday has arrived during the countdown
+          if (diff <= 0) {
+            // Hide countdown popup and show magical words popup
+            countdownPopup.classList.remove('active');
+            magicalWordsPopup.classList.add('active');
+            setupMagicalWordsValidation();
+
+            return;
+          }
+
+          // Calculate time units
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+          // Update DOM
+          daysEl.textContent = days.toString().padStart(2, '0');
+          hoursEl.textContent = hours.toString().padStart(2, '0');
+          minutesEl.textContent = minutes.toString().padStart(2, '0');
+          secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+          // Continue updating
+          requestAnimationFrame(updateCountdown);
+        }
+
+        // Start countdown
+        updateCountdown();
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="bday.js"></script>
+  <script src="navbar.js"></script>
+</body>
+
+</html>

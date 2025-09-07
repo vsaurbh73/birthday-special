@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Gift Box</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="gift.css">
+</head>
+<body>
+    <!-- Responsive Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="bday.html">
+                    <img src="images/logo.png" alt="Shaily Birthday Logo" class="navbar-logo-img">
+                  </a>            </div>
+            <ul class="nav-menu">
+         
+                <li class="nav-item">
+                    <a href="bday.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="story.html" class="nav-link">Our Journey</a>
+                </li>
+                <li class="nav-item">
+                    <a href="favorite.html" class="nav-link">My Girl's Favorite</a>
+                </li>
+                <li class="nav-item">
+                    <a href="letter.html" class="nav-link">Letter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="playlist.html" class="nav-link">Playlist</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gift.html" class="nav-link active">Gifts</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Magical Sparkles Background -->
+    <div class="sparkle-container">
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+        <div class="sparkle">💫</div>
+        <div class="sparkle">✨</div>
+        <div class="sparkle">🌟</div>
+        <div class="sparkle">✨</div>
+    </div>
+
+    <div class="main-container">
+        <div class="box">
+            <div class="box-body" id="giftBox">
+                <div class="box-lid" id="giftLid">
+                    <div class="box-bowtie"></div>
+                </div>
+                <div class="vertical-ribbon"></div>
+                <div class="hidden-message" id="hiddenMessage">
+                    <div class="message-card">
+                        🎁 Your gift is on the way... 🎉
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="message-container" id="messageContainer">
+            <div class="gift-message">
+                🎁 Your gift is on the way... 🎉
+            </div>
+        </div>
+        
+        <div class="confetti-container" id="confettiContainer"></div>
+        
+        <div class="click-hint">Click the gift box!</div>
+    </div>
+    <footer style="background:#fdf4fa; color:#333; text-align:center; padding:25px 10px; font-family:'Poppins', sans-serif;">
+        <h3 style="margin:0; font-size:15px; font-weight:600; letter-spacing:1px;">Made by Saurabh</h3>
+        <p style="margin:8px 0 0; font-size:14px; color:#666; font-style:italic;">© 2025 All Rights Reserved</p>
+      </footer>
+    <script src="gift.js"></script>
+</body>
+</html>

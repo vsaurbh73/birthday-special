@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Surprise for My Love ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-container">
+        <a href="#home" class="brand" aria-label="Birthday Surprise">
+          <img src="Images/logo.jpg" class="brand-logo" alt="Birthday Surprise logo" />
+          <!-- <span class="brand-text">Birthday Surprise</span> -->
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+                     <ul class="nav-list">
+             <li><a href="#home" class="nav-link active">Home</a></li>
+             <li><a href="story.html" class="nav-link">Our Journey</a></li>
+             <li><a href="#wish" class="nav-link">Wishes</a></li>
+             <li><a href="#why-love" class="nav-link">Why I Love You</a></li>
+             <li><a href="#gifts" class="nav-link">Gifts</a></li>
+             <li><a href="#contact" class="nav-link">Contact</a></li>
+           </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="home-section">
+        <div class="container">
+          <div class="home-content">
+            <div class="birthday-text">
+              <h1 class="birthday-title">
+                <span>Happy</span> <span>Birthday</span> <span id="changing-title">My Love</span>
+                <!-- <span class="cursor">|</span> -->
+              </h1>
+              <div class="birthday-caption">
+                <p class="caption-text">May your special day be filled with joy, laughter, and endless love! 🌟</p>
+              </div>
+            </div>
+            <div class="love-title">
+              <div class="emoji-container">
+                <div class="emoji-chip" data-tooltip="Love">
+                  <span class="emoji">❤️</span>
+                  <div class="sparkle sparkle-1"></div>
+                  <div class="sparkle sparkle-2"></div>
+                  <div class="sparkle sparkle-3"></div>
+                </div>
+                <div class="emoji-chip" data-tooltip="Cake">
+                  <span class="emoji">🎂</span>
+                  <div class="sparkle sparkle-1"></div>
+                  <div class="sparkle sparkle-2"></div>
+                  <div class="sparkle sparkle-3"></div>
+                </div>
+                <div class="emoji-chip" data-tooltip="Party">
+                  <span class="emoji">🎉</span>
+                  <div class="sparkle sparkle-1"></div>
+                  <div class="sparkle sparkle-2"></div>
+                  <div class="sparkle sparkle-3"></div>
+                </div>
+                <div class="emoji-chip" data-tooltip="Gift">
+                  <span class="emoji">🎁</span>
+                  <div class="sparkle sparkle-1"></div>
+                  <div class="sparkle sparkle-2"></div>
+                  <div class="sparkle sparkle-3"></div>
+                </div>
+                <div class="emoji-chip" data-tooltip="Magic">
+                  <span class="emoji">✨</span>
+                  <div class="sparkle sparkle-1"></div>
+                  <div class="sparkle sparkle-2"></div>
+                  <div class="sparkle sparkle-3"></div>
+                </div>
+              </div>
+            </div>
+          
+                         <div class="age-button-container">
+               <button id="age-btn" class="age-btn">Know Your Age</button>
+             </div>
+          
+          </div>
+        </div>
+        <div class="floating-hearts">
+          <div class="heart">❤️</div>
+          <div class="heart">💖</div>
+          <div class="heart">💕</div>
+          <div class="heart">💗</div>
+          <div class="heart">💝</div>
+        </div>
+      </section>
+
+      <!-- Age Popup Modal -->
+      <div id="age-modal" class="age-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>🎂 Your Age Calculator 🎂</h2>
+            <button class="close-btn" id="close-modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="birth-info">
+              <h3>Birth Date: 8th September 2000</h3>
+              <p class="current-date" id="current-date"></p>
+            </div>
+            <div class="age-display">
+              <div class="age-item">
+                <span class="age-number" id="years">0</span>
+                <span class="age-label">Years</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="months">0</span>
+                <span class="age-label">Months</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="days">0</span>
+                <span class="age-label">Days</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="hours">0</span>
+                <span class="age-label">Hours</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="minutes">0</span>
+                <span class="age-label">Minutes</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="seconds">0</span>
+                <span class="age-label">Seconds</span>
+              </div>
+              <div class="age-item">
+                <span class="age-number" id="milliseconds">0</span>
+                <span class="age-label">Milliseconds</span>
+              </div>
+            </div>
+            <div class="age-message">
+              <p>Every moment with you is precious! 💕</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section id="wish" class="celebration-banner">
+        <div class="banner-background">
+          <div class="sparkles">
+            <div class="sparkle sparkle-1"></div>
+            <div class="sparkle sparkle-2"></div>
+            <div class="sparkle sparkle-3"></div>
+            <div class="sparkle sparkle-4"></div>
+            <div class="sparkle sparkle-5"></div>
+            <div class="sparkle sparkle-6"></div>
+            <div class="sparkle sparkle-7"></div>
+            <div class="sparkle sparkle-8"></div>
+            <div class="sparkle sparkle-9"></div>
+            <div class="sparkle sparkle-10"></div>
+            <div class="sparkle sparkle-11"></div>
+            <div class="sparkle sparkle-12"></div>
+            <div class="sparkle sparkle-13"></div>
+            <div class="sparkle sparkle-14"></div>
+            <div class="sparkle sparkle-15"></div>
+          </div>
+          <div class="twinkles">
+            <div class="twinkle twinkle-1"></div>
+            <div class="twinkle twinkle-2"></div>
+            <div class="twinkle twinkle-3"></div>
+            <div class="twinkle twinkle-4"></div>
+            <div class="twinkle twinkle-5"></div>
+            <div class="twinkle twinkle-6"></div>
+            <div class="twinkle twinkle-7"></div>
+            <div class="twinkle twinkle-8"></div>
+            <div class="twinkle twinkle-9"></div>
+            <div class="twinkle twinkle-10"></div>
+          </div>
+          <div class="balloons">
+            <div class="balloon balloon-1">🎈</div>
+            <div class="balloon balloon-2">🎈</div>
+            <div class="balloon balloon-3">🎈</div>
+            <div class="balloon balloon-4">🎈</div>
+            <div class="balloon balloon-5">🎈</div>
+          </div>
+          <div class="confetti">
+            <div class="confetti-piece confetti-1"></div>
+            <div class="confetti-piece confetti-2"></div>
+            <div class="confetti-piece confetti-3"></div>
+            <div class="confetti-piece confetti-4"></div>
+            <div class="confetti-piece confetti-5"></div>
+            <div class="confetti-piece confetti-6"></div>
+            <div class="confetti-piece confetti-7"></div>
+            <div class="confetti-piece confetti-8"></div>
+            <div class="confetti-piece confetti-9"></div>
+            <div class="confetti-piece confetti-10"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="banner-content">
+            <h1 class="celebration-title">
+              <span class="title-text">Celebrating</span>
+              <span class="highlight-number">25</span>
+              <span class="title-text">Years</span>
+            </h1>
+            <div class="banner-subtitle">
+              <p>A quarter century of beautiful memories and endless love</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  <section id="moments" class="moments-section">
+        <div class="container swiper">
+          <h2 class="section-title">✨ Our Beautiful Moments ✨</h2>
+
+          <div class="card-wrapper">
+            <ul class="card-list swiper-wrapper">
+              <li class="card-item swiper-slide">
+                <a href="#" class="card-link">
+                  <img src="images/1.png" alt="Card Image" class="card-image" />
+                  <p class="badge badge-designer">Designer</p>
+                  <h2 class="card-title">
+                    Lorem ipsum dolor sit explicabo adipisicing elit
+                  </h2>
+                </a>
+              </li>
+              <li class="card-item swiper-slide">
+                <a href="#" class="card-link">
+                  <img src="images/developer.jpg" alt="Card Image" class="card-image" />
+                  <p class="badge badge-developer">Developer</p>
+                  <h2 class="card-title">
+                    Lorem ipsum dolor sit explicabo adipisicing elit
+                  </h2>
+                </a>
+              </li>
+              <li class="card-item swiper-slide">
+                <a href="#" class="card-link">
+                  <img src="images/marketer.jpg" alt="Card Image" class="card-image" />
+                  <p class="badge badge-marketer">Marketer</p>
+                  <h2 class="card-title">
+                    Lorem ipsum dolor sit explicabo adipisicing elit
+                  </h2>
+                </a>
+              </li>
+              <li class="card-item swiper-slide">
+                <a href="#" class="card-link">
+                  <img src="images/gamer.jpg" alt="Card Image" class="card-image" />
+                  <p class="badge badge-gamer">Gamer</p>
+                  <h2 class="card-title">
+                    Lorem ipsum dolor sit explicabo adipisicing elit
+                  </h2>
+                </a>
+              </li>
+              <li class="card-item swiper-slide">
+                <a href="#" class="card-link">
+                  <img src="images/editor.jpg" alt="Card Image" class="card-image" />
+                  <p class="badge badge-editor">Editor</p>
+                  <h2 class="card-title">
+                    Lorem ipsum dolor sit explicabo adipisicing elit
+                  </h2>
+                </a>
+              </li>
+            </ul>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-slide-button swiper-button-prev"></div>
+            <div class="swiper-slide-button swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+<section id="why-love" class="why-love-section">
+  <div class="why-love-background">
+    <!-- Floating hearts animation -->
+    <div class="why-love-hearts">
+      <div class="why-love-heart">❤️</div>
+      <div class="why-love-heart">💖</div>
+      <div class="why-love-heart">💕</div>
+      <div class="why-love-heart">💗</div>
+      <div class="why-love-heart">💝</div>
+    </div>
+    <!-- Sparkles animation -->
+    <div class="why-love-sparkles">
+      <div class="why-love-sparkle why-love-sparkle-1"></div>
+      <div class="why-love-sparkle why-love-sparkle-2"></div>
+      <div class="why-love-sparkle why-love-sparkle-3"></div>
+      <div class="why-love-sparkle why-love-sparkle-4"></div>
+      <div class="why-love-sparkle why-love-sparkle-5"></div>
+      <div class="why-love-sparkle why-love-sparkle-6"></div>
+      <div class="why-love-sparkle why-love-sparkle-7"></div>
+      <div class="why-love-sparkle why-love-sparkle-8"></div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <h2 class="why-love-title">Why I Love You</h2>
+    <div class="why-love-content">
+      <p class="why-love-text why-love-text-1">Your smile dddd fdvdvddvd fd d df dfd fd f dff frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh nkn  f frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh f frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh f frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh f frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh f frrfrgrdvdvfvfvfv v v v    f  saurabh evrgb  laiswrh  kanb aoge i lov yiud sahailty gr r grfgrgr fr frf rffrfr brightens even my darkest days ✨</p>
+    
+    </div>
+  
+  
+  </div>
+</section>
+<section class="love-gallery">
+  <h2 class="gallery-title section-gallery">✨ Our Beautiful Moments ✨</h2>
+  <div class="gallery-cards">
+    <div class="gallery-card">
+      <img src="images/3.jpg" alt="Moment 1">
+        <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/4.jpg" alt="Moment 2">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/5.jpg" alt="Moment 3">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+      <div class="gallery-card">
+      <img src="images/3.jpg" alt="Moment 1">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/4.jpg" alt="Moment 2">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/5.jpg" alt="Moment 3">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+      <div class="gallery-card">
+      <img src="images/3.jpg" alt="Moment 1">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/4.jpg" alt="Moment 2">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/5.jpg" alt="Moment 3">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+    <div class="gallery-card">
+      <img src="images/5.jpg" alt="Moment 3">
+            <div class="gallery-text">hey cutieeee 🎀</div>
+    </div>
+  </div>
+</section>
+
+<section class="music-section">
+  <div class="music-container">
+    <!-- Left Side Text -->
+ <div class="music-text">
+  <h2><span class="highlight">Every Song</span> Tells a Story, Here Is Ours ❤️</h2>
+  <p class="sub-text">A playlist filled with memories, laughter, and love we’ve shared.</p>
+</div>
+
+
+    <!-- Right Side Image + Player -->
+    <div class="music-media">     
+
+ <img id="musicImage" src="images/img1.jpg" alt="Music Image" />
+      <div class="music-player">
+      <div class="scroll-container">
+          <div class="scroll-text">
+         Shiddat Title Track- Manan Bhardwaj
+          </div>
+        </div>
+        <!-- Custom Audio Player -->
+        <audio id="audio" src="Music/Shiddat.mp3" controls autoplay loop></audio>
+
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <section class="tagline-section">
+  <div class="tagline-content">
+    <h2>💖 Forever in Every Beat 💖</h2>
+    <p>Every melody, every lyric, every moment — it’s all for <span class="you">YOU 🎶</span></p>
+        <div class="button-container">
+        <button id="loveBtn">Click Me ❤️</button>
+    </div>
+  </div>
+
+</section>
+<div id="lovePopup">
+    <div class="popup-content">
+        <div class="popup-fireworks">
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+            <div class="firework"></div>
+        </div>
+        <div class="popup-hearts">
+            <div class="popup-heart">❤️</div>
+            <div class="popup-heart">💖</div>
+            <div class="popup-heart">💕</div>
+            <div class="popup-heart">💓</div>
+            <div class="popup-heart">💗</div>
+        </div>
+        <h2 class="popup-title">I Love You</h2>
+        <p class="popup-message">Every moment with you is a treasure I cherish forever</p>
+        <p class="popup-message">You make my heart smile in ways no one else can</p>
+        <div class="popup-close" id="closePopup">&times;</div>
+    </div>
+</div>
+<footer class="footer">
+    &copy; 2025 Made with ❤️ by Saurabh. All rights reserved.
+</footer>
+    </main>
+      <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Spotify-Style Player</title>
+  <link rel="stylesheet" href="playlist.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Beautiful Romantic Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+          <a href="bday.html">
+            <img src="images/logo.png" alt="Shaily Birthday Logo" class="navbar-logo-img">
+          </a>        </div>
+        <ul class="nav-menu">
+           
+            <li class="nav-item">
+                <a href="bday.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="story.html" class="nav-link">Our Journey</a>
+          </li>
+            <li class="nav-item">
+                <a href="favorite.html" class="nav-link ">My Girl's Favorite</a>
+            </li>
+            <li class="nav-item">
+                <a href="letter.html" class="nav-link">Letter</a>
+            </li>
+            <li class="nav-item">
+                <a href="playlist.html" class="nav-link active">Playlist</a>
+            </li>
+            <li class="nav-item">
+                <a href="gift.html" class="nav-link">Gifts</a>
+            </li>
+        </ul>
+        <div class="nav-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+</nav>
+
+  <section class="hero-playlist" aria-label="Our playlist">
+    <div class="hero-inner">
+      <h1>Our playlist</h1>
+      <p class="subtitle">Songs that feel like us</p>
+    </div>
+  </section>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">❤</div>
+        <div class="brand-text">
+          <h1>Love Playlist</h1>
+          <p>For my favorite person</p>
+        </div>
+      </div>
+
+      <div class="playlist-section">
+        <h2>Playlist</h2>
+        <ul id="trackList" class="track-list" aria-label="Playlist"></ul>
+      </div>
+    </aside>
+
+    <main class="player">
+      <header class="player-header">
+        <div class="now-playing">Now Playing</div>
+        <div class="mood-chip" title="Romantic vibes">Dreamy ✨</div>
+      </header>
+
+      <section class="player-body">
+        <div class="cover-wrap">
+          <img id="cover" src="images/letter3.png" alt="Album Cover" class="cover" />
+          <div class="cover-glow"></div>
+        </div>
+
+        <div class="meta">
+          <h3 id="title">—</h3>
+          <p id="artist">—</p>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" class="btn" aria-label="Previous">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M6 6h2v12H6zM9.5 12l10.5 6V6z"></path>
+            </svg>
+          </button>
+          <button id="playPauseBtn" class="btn primary" aria-label="Play/Pause">
+            <svg id="playIcon" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7z"></path>
+            </svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true" style="display:none">
+              <path d="M6 5h4v14H6zM14 5h4v14h-4z"></path>
+            </svg>
+          </button>
+          <button id="nextBtn" class="btn" aria-label="Next">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+              <path d="M16 6h2v12h-2zM4 18l10.5-6L4 6z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="progress">
+          <span id="currentTime" class="time">0:00</span>
+          <input id="seekBar" type="range" min="0" max="100" value="0" aria-label="Seek" />
+          <span id="duration" class="time">0:00</span>
+        </div>
+
+        <div class="extras">
+          <div class="volume">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
+            </svg>
+            <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume" />
+          </div>
+          <button id="shuffleBtn" class="chip" aria-pressed="false">Shuffle</button>
+          <button id="repeatBtn" class="chip" aria-pressed="false">Repeat</button>
+        </div>
+      </section>
+
+      <footer class="player-footer">
+        <small>Made with ❤ for you</small>
+      </footer>
+    </main>
+  </div>
+  <footer style="background:#fdf4fa; color:#333; text-align:center; padding:25px 10px; font-family:'Poppins', sans-serif;">
+    <h3 style="margin:0; font-size:15px; font-weight:600; letter-spacing:1px;">Made by Saurabh</h3>
+    <p style="margin:8px 0 0; font-size:14px; color:#666; font-style:italic;">© 2025 All Rights Reserved</p>
+  </footer>
+  <audio id="audio"></audio>
+  <script>
+    (function(){
+      var header = document.querySelector('header.navbar');
+      if (!header) return;
+      var revealThreshold = 8;
+      var lastKnownScrollY = 0;
+      var ticking = false;
+      function update(){
+        var y = lastKnownScrollY;
+        if (y > revealThreshold) header.classList.add('is-visible'); else header.classList.remove('is-visible');
+        ticking = false;
+      }
+      window.addEventListener('scroll', function(){
+        lastKnownScrollY = window.scrollY || window.pageYOffset;
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+      lastKnownScrollY = window.scrollY || window.pageYOffset;
+      if (lastKnownScrollY > revealThreshold) header.classList.add('is-visible');
+    })();
+    (function(){
+      var menuButton = document.querySelector('.menu-toggle');
+      var navLinks = document.querySelector('.nav-links');
+      if (menuButton && navLinks) {
+        menuButton.addEventListener('click', function(){
+          var isOpen = navLinks.classList.toggle('open');
+          menuButton.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    })();
+  </script>
+  <script src="playlist.js"></script>
+  <script src="navbar.js"></script>
+</body>
+</html>
+
+
